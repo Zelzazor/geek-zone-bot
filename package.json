@@ -1,0 +1,21 @@
+{
+  "name": "geek-zone-bot",
+  "version": "1.0.0",
+  "description": "This is a bot for the Geek Zone.",
+  "type": "module",
+  "main": "bot.js",
+  "scripts": {
+    "engine": "node bot.js",
+    "dev": "nodemon bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Zelzazor/geek-zone-bot.git"
+  },
+  "author": "Felipe Ramírez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Zelzazor/geek-zone-bot/issues"
+  },
+  "homepage": "https://github.com/Zelzazor/geek-zone-bot#readme"
+}
