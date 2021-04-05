@@ -2,7 +2,7 @@ import TelegramBot from 'node-telegram-bot-api';
 import dotenv from 'dotenv';
 
 if (process.env.NODE_ENV !== 'production') { 
-    require('dotenv').config() 
+    dotenv.config() 
 }
 
 
