@@ -9,8 +9,12 @@ export default {
         }
         return formatStr;
     },
+    wiki: function(extract, link, search){
+        return `<b>${search}</b>\n\n${extract}\n\nMás información: ${link}`
+    }
+    ,
     options: function(message){return {
-		parse_mode: 'Markdown',
+		parse_mode: 'html',
 		reply_to_message_id: message.message_id,
     }}
 }

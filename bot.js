@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== 'production') {
     dotenv.config() 
 }
 
-const {donate, options, dictionary} = responses;
+const {donate, options, dictionary, wiki} = responses;
 
 const token = process.env.TOKEN;
 const oxford_id = process.env.APP_ID_OXFORD;
@@ -62,4 +62,17 @@ bot.onText(/^\/rae (.+)/,  (msg, match) => {
     })();
 
 })
+
+bot.onText(/^\/wiki (.+)/, (msg, match)=>{
+    (async ()=>{
+        const search = match[1];
+        const URL = encodeURI(`https://es.wikipedia.org/api/rest_v1/page/summary/${search}`);
+        const res = await fetch(URL);
+        const data = await res.json();
+        //console.log(data);
+        const extract = data.extract;
+        const link = data.content_urls.desktop.page;
+        bot.sendMessage(msg.chat.id, wiki(extract,link,search), options(msg));
+    })();
+});
 
