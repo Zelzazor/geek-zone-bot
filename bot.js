@@ -1,6 +1,7 @@
 import TelegramBot from 'node-telegram-bot-api';
 import dotenv from 'dotenv';
 import responses from './commands/responses.js';
+import assistance from './commands/assistance.js'
 import Rae from 'rae';
 
 if (process.env.NODE_ENV !== 'production') { 
@@ -8,11 +9,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const {donate, options, dictionary, wiki} = responses;
+const { getDefs } = assistance;
 
 const token = process.env.TOKEN;
-const oxford_id = process.env.APP_ID_OXFORD;
-const oxford_key = process.env.APP_KEY_OXFORD;
-const raeClient = Rae.create();
+
 
 
 
@@ -37,31 +37,23 @@ bot.onText(/^\/rae (.+)/,  (msg, match) => {
 
     (async ()=>{
             const word = match[1];
-            const init = {
-                method: 'GET',
-                headers: {
-                    'app_id': oxford_id,
-                    'app_key': oxford_key
-                }
-            }
-            const url = encodeURI(`https://od-api.oxforddictionaries.com/api/v2/entries/es/${word}`);
-            const res = await fetch(url, init);
-            //console.log(res.headers);
-            const data = await res.json();
-            //console.log(data);
-            if (data.error){
-                bot.sendMessage(msg.chat.id, `No he encontrado resultados para: ${word}`, options(msg));
-            }
-            else{
-                const senses = data.results[0].lexicalEntries[0].entries[0].senses;
-                const definitions = senses.map(sense => sense.definitions[0]);
-                //console.log(definitions);
-                bot.sendMessage(msg.chat.id, dictionary(word, definitions), options(msg));
-            }
-            
+            const lang_es = "es";
+            getDefs(bot, word, lang_es, msg);
     })();
 
-})
+});
+
+bot.onText(/^\/oxford (.+)/,  (msg, match) => {
+
+    (async ()=>{
+            const word = match[1];
+            const lang_en_us = "en-us";
+            getDefs(bot, word, lang_en_us, msg);
+    })();
+
+});
+
+
 
 bot.onText(/^\/wiki (.+)/, (msg, match)=>{
     (async ()=>{
