@@ -1,12 +1,15 @@
 import TelegramBot from 'node-telegram-bot-api';
 import dotenv from 'dotenv';
+import responses from './commands/responses.js';
 
 if (process.env.NODE_ENV !== 'production') { 
     dotenv.config() 
 }
 
+const {donate, options} = responses;
 
 const token = process.env.TOKEN;
+
 
 const bot = new TelegramBot(token, {polling: true});
 
@@ -18,5 +21,10 @@ bot.onText(/^\/echo (.+)/, (msg, match) => {
     // send back the matched "whatever" to the chat
     bot.sendMessage(chatId, resp);
        
+});
+
+bot.onText(/^\/donate/, (msg) => {
+    const chatId = msg.chat.id;
+    bot.sendMessage(chatId, donate, options(msg));
 });
 
