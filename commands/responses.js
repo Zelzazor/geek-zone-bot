@@ -2,8 +2,10 @@ export default {
     donate: "Dona a este enlace carajo:\nhttps://www.buymeacoffee.com/zelzazor",
     dictionary: function(word, definitions){
         let formatStr = word+":\n";
+        let count = 1;
         for(const definition of definitions)  {
-            formatStr+="1. "+definition+"\n";
+            formatStr+=count+". "+definition+"\n";
+            count++;
         }
         return formatStr;
     },

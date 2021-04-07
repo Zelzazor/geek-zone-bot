@@ -44,12 +44,21 @@ bot.onText(/^\/rae (.+)/,  (msg, match) => {
                     'app_key': oxford_key
                 }
             }
-            const res = await fetch(`https://od-api.oxforddictionaries.com/api/v2/entries/es/${word}`, init);
+            const url = encodeURI(`https://od-api.oxforddictionaries.com/api/v2/entries/es/${word}`);
+            const res = await fetch(url, init);
+            //console.log(res.headers);
             const data = await res.json();
-            const senses = data.results[0].lexicalEntries[0].entries[0].senses;
-            const definitions = senses.map(sense => sense.definitions[0]);
-            //console.log(definitions);
-            bot.sendMessage(msg.chat.id, dictionary(word, definitions), options(msg));
+            //console.log(data);
+            if (data.error){
+                bot.sendMessage(msg.chat.id, `No he encontrado resultados para: ${word}`, options(msg));
+            }
+            else{
+                const senses = data.results[0].lexicalEntries[0].entries[0].senses;
+                const definitions = senses.map(sense => sense.definitions[0]);
+                //console.log(definitions);
+                bot.sendMessage(msg.chat.id, dictionary(word, definitions), options(msg));
+            }
+            
     })();
 
 })
