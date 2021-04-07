@@ -33,7 +33,7 @@ bot.onText(/^\/donate/, (msg) => {
     bot.sendMessage(chatId, donate, options(msg));
 });
 
-bot.onText(/^\/diccionario (.+)/,  (msg, match) => {
+bot.onText(/^\/rae (.+)/,  (msg, match) => {
 
     (async ()=>{
             const word = match[1];
