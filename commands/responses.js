@@ -23,7 +23,7 @@ export default {
 		    reply_to_message_id: message.message_id,
         }
     },
-    toque: `🚨 Toque de queda 🚨:\n
-            Lunes a viernes: 9:00P.M. con libre tránsito hasta las 12:00A.M.\n
-            Fin de semana: 7:00P.M. con libre tránsito hasta las 10:00P.M.\n`
+    toque: `🚨 Toque de queda 🚨:
+    \nLunes a viernes: 9:00P.M. con libre tránsito hasta las 12:00A.M.
+    \nFin de semana: 7:00P.M. con libre tránsito hasta las 10:00P.M.\n`
 }
