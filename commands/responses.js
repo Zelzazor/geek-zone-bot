@@ -16,5 +16,14 @@ export default {
     options: function(message){return {
 		parse_mode: 'html',
 		reply_to_message_id: message.message_id,
-    }}
+    }},
+    options_markdown: function(message){
+        return {
+            parse_mode: 'Markdown',
+		    reply_to_message_id: message.message_id,
+        }
+    },
+    toque: `🚨 Toque de queda 🚨:\n
+            Lunes a viernes: 9:00P.M. con libre tránsito hasta las 12:00A.M.\n
+            Fin de semana: 7:00P.M. con libre tránsito hasta las 10:00P.M.\n`
 }

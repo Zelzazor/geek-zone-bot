@@ -8,7 +8,7 @@ if (process.env.NODE_ENV !== 'production') {
     dotenv.config() 
 }
 
-const {donate, options, dictionary, wiki} = responses;
+const {donate, options, dictionary, wiki, toque, options_markdown} = responses;
 const { getDefs } = assistance;
 
 const token = process.env.TOKEN;
@@ -53,7 +53,9 @@ bot.onText(/^\/oxford (.+)/,  (msg, match) => {
 
 });
 
-
+bot.onText(/^\/toque/, (msg) => {
+    bot.sendMessage(msg.chat.id, toque, options_markdown(msg));
+})
 
 bot.onText(/^\/wiki (.+)/, (msg, match)=>{
     (async ()=>{
