@@ -8,7 +8,7 @@ if (process.env.NODE_ENV !== 'production') {
     dotenv.config() 
 }
 
-const {donate, options, dictionary, wiki, toque, options_markdown} = responses;
+const {donate, options, dictionary, wiki, toque, options_markdown, til} = responses;
 const { getDefs } = assistance;
 
 const token = process.env.TOKEN;
@@ -69,4 +69,21 @@ bot.onText(/^\/wiki (.+)/, (msg, match)=>{
         bot.sendMessage(msg.chat.id, wiki(extract,link,search), options(msg));
     })();
 });
+
+bot.onText(/^\/til/, (msg, match)=>{
+    (async ()=>{
+        const search = match[1];
+        const URL = encodeURI(`https://www.reddit.com/r/todayilearned/random.json`);
+        const res = await fetch(URL);
+        //console.log(res);
+        const data = await res.json();
+        
+        const title = data[0].data.children[0].data.title;
+        
+        const permalink = encodeURI(`https://www.reddit.com${data[0].data.children[0].data.permalink}`);
+        //console.log(title);
+        //console.log(permalink);
+        bot.sendMessage(msg.chat.id, til(title, permalink), options(msg));
+    })();
+})
 

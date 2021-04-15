@@ -25,5 +25,8 @@ export default {
     },
     toque: `🚨 Toque de queda 🚨:
     \nLunes a viernes: 9:00P.M. con libre tránsito hasta las 12:00A.M.
-    \nFin de semana: 7:00P.M. con libre tránsito hasta las 10:00P.M.\n`
+    \nFin de semana: 7:00P.M. con libre tránsito hasta las 10:00P.M.\n`,
+    til: function(title, permalink){
+        return `${title}\n\nLink:${permalink}`
+    }
 }
