@@ -87,6 +87,28 @@ bot.onText(/^\/til/, (msg, match)=>{
     })();
 })
 
+bot.onText(/^\/meme/, (msg, match)=>{
+    (async ()=>{
+        const search = match[1];
+        const URL = encodeURI(`https://www.reddit.com/r/dankmemes/random.json`);
+        const res = await fetch(URL);
+        //console.log(res);
+        const data = await res.json();
+        
+        const result = encodeURI(data[0].data.children[0].data.url);
+        
+        
+        console.log(result);
+        //console.log(permalink);
+        if(result.includes(".gif")){
+            bot.sendDocument(msg.chat.id, result, options(msg));
+        }
+        else{
+            bot.sendPhoto(msg.chat.id, result, options(msg));
+        }
+    })();
+})
+
 bot.onText(/^\/advice/, (msg, match)=>{
     (async ()=>{
         const search = match[1];
