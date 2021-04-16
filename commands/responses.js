@@ -23,9 +23,12 @@ export default {
 		    reply_to_message_id: message.message_id,
         }
     },
-    toque: `🚨 Toque de queda 🚨:
+    toque: `🚨 Toque de queda a partir de 19/4/2021 🚨:
     \nLunes a viernes: 10:00P.M. con libre tránsito hasta las 12:00A.M.
-    \nFin de semana: 9:00P.M. con libre tránsito hasta las 12:00A.M.\n`,
+    \nFin de semana: 9:00P.M. con libre tránsito hasta las 12:00A.M.\n
+    \n🚨 Toque de queda anterior 🚨:
+    \nLunes a viernes: 9:00P.M. con libre tránsito hasta las 12:00A.M.
+    \nFin de semana: 7:00P.M. con libre tránsito hasta las 10:00P.M.\n`,
     til: function(title, permalink){
         return `${title}\n\nLink:${permalink}`
     }
