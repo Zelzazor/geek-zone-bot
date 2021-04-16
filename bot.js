@@ -87,3 +87,20 @@ bot.onText(/^\/til/, (msg, match)=>{
     })();
 })
 
+bot.onText(/^\/advice/, (msg, match)=>{
+    (async ()=>{
+        const search = match[1];
+        const URL = encodeURI(`https://api.adviceslip.com/advice`);
+        const res = await fetch(URL);
+        //console.log(res);
+        const data = await res.json();
+        
+        const advice = data.slip.advice;
+        
+        
+        //console.log(title);
+        //console.log(permalink);
+        bot.sendMessage(msg.chat.id, advice, options(msg));
+    })();
+})
+
