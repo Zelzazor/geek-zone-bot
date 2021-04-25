@@ -129,7 +129,7 @@ bot.onText(/^\/advice/, (msg, match)=>{
 bot.onText(/^\/scp (.+)/, (msg, match)=>{
     (async ()=>{
         const search = match[1];
-        const URL = encodeURI(`http://localhost:3000/scp/${search}`);
+        const URL = encodeURI(`https://scp-api-zelzazor.herokuapp.com/scp/${search}`);
         const res = await fetch(URL);
         //console.log(res);
         const data = await res.json();
@@ -150,7 +150,7 @@ bot.onText(/^\/scp (.+)/, (msg, match)=>{
 bot.onText(/^\/random_scp/, (msg, match)=>{
     (async ()=>{
         const search = match[1];
-        const URL = encodeURI(`http://localhost:3000/scp/random`);
+        const URL = encodeURI(`https://scp-api-zelzazor.herokuapp.com/scp/random`);
         const res = await fetch(URL);
         //console.log(res);
         const data = await res.json();
