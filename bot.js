@@ -12,6 +12,7 @@ const {donate, options, dictionary, wiki, toque, options_markdown, til, scp} = r
 const { getDefs } = assistance;
 
 const token = process.env.TOKEN;
+const scp_auth = process.env.KEY_SCP;
 
 
 
@@ -130,7 +131,13 @@ bot.onText(/^\/scp (.+)/, (msg, match)=>{
     (async ()=>{
         const search = match[1];
         const URL = encodeURI(`https://scp-api-zelzazor.herokuapp.com/scp/${search}`);
-        const res = await fetch(URL);
+        const init = {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Basic: ' + scp_auth
+            }
+        }
+        const res = await fetch(URL, init);
         //console.log(res);
         const data = await res.json();
         
@@ -151,7 +158,13 @@ bot.onText(/^\/random_scp/, (msg, match)=>{
     (async ()=>{
         const search = match[1];
         const URL = encodeURI(`https://scp-api-zelzazor.herokuapp.com/scp/random`);
-        const res = await fetch(URL);
+        const init = {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Basic: ' + scp_auth
+            }
+        }
+        const res = await fetch(URL, init);
         //console.log(res);
         const data = await res.json();
         
