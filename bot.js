@@ -8,7 +8,7 @@ if (process.env.NODE_ENV !== 'production') {
     dotenv.config() 
 }
 
-const {donate, options, dictionary, wiki, toque, options_markdown, til} = responses;
+const {donate, options, dictionary, wiki, toque, options_markdown, til, scp} = responses;
 const { getDefs } = assistance;
 
 const token = process.env.TOKEN;
@@ -123,6 +123,48 @@ bot.onText(/^\/advice/, (msg, match)=>{
         //console.log(title);
         //console.log(permalink);
         bot.sendMessage(msg.chat.id, advice, options(msg));
+    })();
+})
+
+bot.onText(/^\/scp (.+)/, (msg, match)=>{
+    (async ()=>{
+        const search = match[1];
+        const URL = encodeURI(`http://localhost:3000/scp/${search}`);
+        const res = await fetch(URL);
+        //console.log(res);
+        const data = await res.json();
+        
+
+        const title = data[0].title;
+        const scp_class = data[0].class;
+        const description = data[0].description;
+        const link = encodeURI(data[0].link);
+        
+        
+        //console.log(title);
+        //console.log(permalink);
+        bot.sendMessage(msg.chat.id, scp(title, scp_class, description, link), options(msg));
+    })();
+})
+
+bot.onText(/^\/random_scp/, (msg, match)=>{
+    (async ()=>{
+        const search = match[1];
+        const URL = encodeURI(`http://localhost:3000/scp/random`);
+        const res = await fetch(URL);
+        //console.log(res);
+        const data = await res.json();
+        
+
+        const title = data[0].title;
+        const scp_class = data[0].class;
+        const description = data[0].description;
+        const link = encodeURI(data[0].link);
+        
+        
+        //console.log(title);
+        //console.log(permalink);
+        bot.sendMessage(msg.chat.id, scp(title, scp_class, description, link), options(msg));
     })();
 })
 

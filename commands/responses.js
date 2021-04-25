@@ -31,5 +31,8 @@ export default {
     \nFin de semana: 7:00P.M. con libre tránsito hasta las 10:00P.M.\n`,
     til: function(title, permalink){
         return `${title}\n\nLink:${permalink}`
+    },
+    scp: function(title, scp_class, description, link){
+        return `<b>${title}</b>\n\nObject class: <b>${scp_class}</b>\n\nDescription: ${description}\n\nMore information: ${link}`
     }
 }
