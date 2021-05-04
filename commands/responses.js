@@ -32,7 +32,7 @@ export default {
     til: function(title, permalink){
         return `${title}\n\nLink:${permalink}`
     },
-    scp: function(title, scp_class, description, link){
-        return `<b>${title}</b>\n\nObject class: <b>${scp_class}</b>\n\nDescription: ${description}\n\nMore information: ${link}`
+    scp: function(title, scp_class, scp_name, description, link){
+        return `<b>${title}</b> - ${scp_name}\n\nObject class: <b>${scp_class}</b>\n\nDescription: ${description}\n\nMore information: ${link}`
     }
 }
