@@ -179,7 +179,7 @@ bot.onText(/^\/random_scp/, (msg, match)=>{
         
         //console.log(title);
         //console.log(permalink);
-        bot.sendMessage(msg.chat.id, scp(title, scp_class, description, link), options(msg));
+        bot.sendMessage(msg.chat.id, scp(title, scp_class, scp_name, description, link), options(msg));
     })();
 })
 
