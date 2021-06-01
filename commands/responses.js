@@ -23,7 +23,10 @@ export default {
 		    reply_to_message_id: message.message_id,
         }
     },
-    toque: `🚨 Toque de queda a partir de 27/5/2021 (Solo aplica al GSD) 🚨:
+    toque: `🚨 Toque de queda a partir de 2/6/2021 hasta 9/6/2021 🚨:
+    \nLunes a Viernes: 6:00P.M. con libre tránsito hasta las 9:00P.M.
+    \nFin de semana: 3:00P.M. con libre tránsito hasta las 6:00P.M.
+    \n🚨 Toque de queda a partir de 27/5/2021 (Solo aplica al GSD) 🚨:
     \nTodos los días: 8:00P.M. con libre tránsito hasta las 11:00P.M.
     \n🚨 Toque de queda anterior 🚨:
     \nLunes a viernes: 10:00P.M. con libre tránsito hasta las 12:00A.M.
